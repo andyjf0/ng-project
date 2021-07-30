@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-5">
+    <app-forces-list></app-forces-list>
+  </div>
+  <div class="col-md-7">
+    <router-outlet></router-outlet>
+    <!-- <app-forces-detail
+      *ngIf="selectedForce; else infoText"
+      [force]="selectedForce"></app-forces-detail>
+    <ng-template #infoText>
+      <p>Select a Police Force For More Information</p>
+    </ng-template> -->
+  </div>
+</div>

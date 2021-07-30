@@ -1,0 +1,70 @@
+<p>force-senior works!</p>
+<!-- <p>{{ this.loadedSeniors }}</p> -->
+<app-senior-item></app-senior-item>
+
+
+<!-- <div class="row">
+  <div>
+    <ul class="list-group" *ngIf="loadedSeniors.length >= 1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>{{ this.force.name }}</h1>
+        </div>
+      </div>
+        <p>{{ this.loadedSeniors[0] }}</p>
+        <li class="list-group-item">
+        <p>Engagement Methods: {{ this.loadedForceDetails[2] | json }}</p>
+        </li>
+        <p>{{ this.loadedSeniors[3] }}</p>
+        <span [innerHTML]="this.loadedSeniors[0]"></span>
+    </ul>
+  </div>
+</div> -->
+
+<div class="row">
+  <app-senior-item
+*ngFor="let seniorEl of seniors; let i = index"
+[senior]="seniorEl"
+[index]="i"
+></app-senior-item>
+</div>
+
+<div class="row"
+ *ngFor="let seniorEl of seniors; let i = index"
+[senior]="seniorEl"
+[index]="i"
+></div>
+
+
+<!-- <div class="row">
+  <app-senior-item></app-senior-item>
+</div> -->
+
+
+
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <app-senior-item
+    *ngFor="let seniorEl of seniors; let i = index"
+    [senior]="seniorEl"
+    [index]="i"></app-senior-item>
+  </div>
+</div> -->
+<!-- <div class="row">
+  <div>
+    <ul class="list-group" *ngIf="loadedSeniors.length >= 1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>{{ this.loadedSeniors[5] }}</h1>
+        </div>
+      </div>
+        <p>Website: <a>{{ this.loadedSeniors[1] }}</a></p>
+        <li class="list-group-item">
+        <p>Engagement Methods: {{ this.loadedForceDetails[2] | json }}</p>
+        </li>
+        <p>Telephone Number: {{ this.loadedSeniors[3] }}</p>
+        <span [innerHTML]="this.loadedSeniors[0]">description:</span>
+    </ul>
+  </div>
+</div> -->
+

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <button class="btn btn-success" routerLink="/">Refresh List</button> -->
+    <button class="btn btn-success"
+    routerLink="/forces"(click)="onFetchData()">1. Fetch List of Forces</button>
+    <!-- <div class="btn-group"
+    appDropdown>
+    <button type="button" class="btn btn-primary dropdown-toggle"
+    routerLink="/forces"(click)="onFetchData()" *ngIf="forces.length >= 1">3. Fetch More Data<span class="caret"></span></button>
+  </div> -->
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-forces-item
+    *ngFor="let forceEl of forces; let i = index"
+    [force]="forceEl"
+    [index]="i"></app-forces-item>
+  </div>
+</div>
+
