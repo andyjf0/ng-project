@@ -8,7 +8,7 @@ import { Senior } from '../forces/senior.model';
 
 import { ForceService } from '../forces/force.service';
 import { ForceDetailService } from '../forces/force-detail.service';
-import { SeniorService } from '../forces/senior.service';
+// import { SeniorService } from '../forces/senior.service';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -17,7 +17,7 @@ export class DataStorageService {
     private http: HttpClient,
     private forceService: ForceService,
     private forceDetailService: ForceDetailService,
-    private seniorService: SeniorService
+    // private seniorService: SeniorService
     ) {}
 
   // storeForces() {

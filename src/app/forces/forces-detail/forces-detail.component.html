@@ -1,13 +1,3 @@
-<!-- <div class="row">
-  <div class="col-xs-12">
-    <img [src]="force.imagePath" alt="{{ force.name }}" class="img-responsive" style="max-height: 300px;">
-  </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-xs-12">
-    <h1>{{ force.name }}</h1>
-  </div>
-</div> -->
 <div class="row">
   <div class="col-xs-12">
     <div class="btn-group"
@@ -16,18 +6,17 @@
         2. Fetch More Data<span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <!-- <li><a href="#">Senior Officers</a></li>
-        <li><a href="#">Stop and search</a></li> -->
         <li><a style="cursor: pointer;" (click)="fetchForceDetail()" style="cursor: pointer;">Force Details</a></li>
-        <li><a style="cursor: pointer;" (click)="onFetchSeniors()" style="cursor: pointer;">Senior Officers</a></li>
-        <!-- <li><a style="cursor: pointer;" (click)="onFetchData()" style="cursor: pointer;">force details</a></li> -->
+        <li><a style="cursor: pointer;" (click)="fetchSeniors()" style="cursor: pointer;">Senior Officers</a></li>
+                <!-- <li><a href="#">Stop and search</a></li> -->
       </ul>
     </div>
   </div>
 </div>
 <hr>
-<div class="row">
+<div class="row" *ngIf="show">
   <div>
+
     <ul class="list-group" *ngIf="loadedForceDetails.length >= 1">
       <div class="row">
         <div class="col-xs-12">
@@ -35,111 +24,35 @@
         </div>
       </div>
         <p>Website: <a>{{ this.loadedForceDetails[1] }}</a></p>
-        <!-- <li class="list-group-item">
-        <p>Engagement Methods: {{ this.loadedForceDetails[2] | json }}</p>
-        </li> -->
         <p>Telephone Number: {{ this.loadedForceDetails[3] }}</p>
-        <!-- <div *ngFor="let detail of loadedForceDetails[2]">Engagement Methods: {{ detail }}</div> -->
         <span [innerHTML]="this.loadedForceDetails[0]"></span>
     </ul>
-    <ul class="list-group" *ngIf="loadedForceDetails.length === 0">
-      No Force data loaded/available
+
+    <ul class="list-group" *ngIf="loadedForceDetails.length === 0">No Force data loaded/available
     </ul>
   </div>
 </div>
-<div class="row">
+
+<div class="row" *ngIf="show2">
   <div>
-    <!-- <ul class="list-group" *ngIf="loadedSeniors.length >= 1">
-      <div class="row"> -->
+
         <div *ngIf="loadedSeniors.length >= 1">
           <h1>{{ this.otherLoadedForceDetails[5] }}</h1>
           <h4>Senior Officers:</h4>
-        <!-- <div [innerHTML]="this.loadedSeniors | json">
-          <div>{{ loadedSeniors[0].name }}</div>
-        </div> -->
-        <!-- <div>Name: {{ loadedSeniors[0].name }}</div>
-        <div>Rank: {{ loadedSeniors[0].rank }}</div> -->
         <div
  [value]="name" *ngFor="let senior of loadedSeniors">
  <h4>{{ senior.name }}</h4>
   <h5>Rank: {{ senior.rank }}</h5> Bio:
   <span [innerHTML]="senior.bio"></span><br>
   <!-- Contact Details: {{ senior.contact_details.twitter }} -->
-
 </div>
-
-        <div *ngIf="loadedSeniors[0].bio >= 1">Bio: {{ loadedSeniors[0].bio }}</div>
         </div>
 
-
-
       <div *ngIf="loadedSeniors.length === 0">
+        <h1>{{ this.otherLoadedForceDetails[5] }}</h1>
         <h4>Senior Officers:</h4>
         No data loaded/available!
       </div>
 
-
       </div>
       </div>
-        <!-- <div class="col-xs-12">
-          <div class="row"
- *ngFor="let seniorEl of seniors; let i = index"
-[senior]="seniorEl"
-[index]="i"
-></div>
-          <h1>{{ this.force.name }}</h1>
-        </div>
-      </div>
-        <p>{{ this.loadedSeniors[0] }}</p>
-        <li class="list-group-item">
-        <p>Engagement Methods: {{ this.loadedForceDetails[2] | json }}</p>
-        </li>
-        <p>{{ this.loadedSeniors[3] }}</p>
-        <span [innerHTML]="this.loadedSeniors[0]"></span>
-    </ul> -->
-
-<!-- <div class="row">
-<div class="col-xs-12" *ngFor="let item of forcedetails | keyvalue">
-  {{item.key}}:{{item.value}}
-</div>
-</div> -->
-
-<!-- <div class="row" *ngFor="let x of forcedetails">
-  <div class="col-xs-12">
-    {{ x.url }}
-  </div>
-  <div>
-    {{forcedetails |json}}
-  </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-xs-12">
-    {{ forcedetails.description }}
-  </div>
-  <div class="col-xs-12">
-    <p>{{ forcedetails.url }}</p>
-  </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <ul class="list-group" *ngIf="loadedForceDetails.length >= 1">
-      <li class="list-group-item" *ngFor="let detail of loadedForceDetails">
-        <h3>{{ forcedetails[0] }}</h3>
-        <p>{{ forcedetails[1] }}</p>
-      </li>
-    </ul>
-  </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <ul class="list-group" *ngIf="loadedForceDetails.length >= 1">
-      <li class="list-group-item">
-        <p>url: {{ this.loadedForceDetails[1] }}</p>
-
-        <span [innerHTML]="this.loadedForceDetails[0]">description:</span>
-
-      </li>
-    </ul>
-  </div>
-</div> -->
-

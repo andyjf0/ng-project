@@ -9,7 +9,7 @@ import { ForceDetail } from '../force-detail.model';
 import { Force } from '../force.model';
 
 import { Senior } from '../senior.model';
-import { SeniorService } from '../senior.service';
+// import { SeniorService } from '../senior.service';
 import { ForceService } from '../force.service';
 
 import { ForceDetailService } from '../force-detail.service';
@@ -27,21 +27,21 @@ import { HttpClient } from '@angular/common/http';
 export class ForcesDetailComponent implements OnInit {
   seniorsChanged = new Subject<Senior[]>();
   force: Force;
-  // forcedetails: ForceDetail;
-  // @Input() forcedetails: ForceDetail;
   id: number;
   loadedForceDetails: ForceDetail[] = [];
   otherLoadedForceDetails: ForceDetail[] = [];
   loadedSeniors: Senior[] = [];
+  public show:boolean = false;
+  public show2:boolean = false;
 
   constructor(private forceService: ForceService,
     private forceDetailService: ForceDetailService,
     private dataStorageService: DataStorageService,
-    private seniorService: SeniorService,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
     ) { };
+
 
   ngOnInit() {
     this.route.params
@@ -51,24 +51,10 @@ export class ForcesDetailComponent implements OnInit {
         this.force = this.forceService.getForce(this.id);
       }
     );
-    // console.log(this.force.id);
+    }
 
-    // this.route.params
-    // .subscribe(
-    //   (params: Params) => {
-    //     this.id = +params['id'];
-    //     this.forcedetails = this.forceDetailService.getForceDetail(this.force.id);
-    //   }
-    // );
-    // console.log(this.forcedetails.url);
-  }
-
-  // onGetSenior() {
-  //   // this.router.navigate(['senior'], {relativeTo: this.route});
-  //   this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
-  // }
-  // onFetchData() {
-  //   this.dataStorageService.fetchForceDetail();
+  // Show() {
+  //   var IsVisible:boolean = true;
   // }
 
   fetchForceDetail(){
@@ -89,14 +75,7 @@ export class ForcesDetailComponent implements OnInit {
     .subscribe(forcedetails => {
       this.loadedForceDetails = forcedetails;
   });
-}
-
-onFetchSeniors() {
-  this.fetchSeniors();
-  // this.loadedSeniors.forEach(seniors => console.log(seniors.name));
-  // this.loadedSeniors.forEach(seniors => console.log(seniors.rank));
-  // return this.loadedSeniors.forEach(seniors => (seniors.name));
-
+  this.show = true;
 }
 
   fetchSeniors(){
@@ -113,11 +92,10 @@ onFetchSeniors() {
     })
     )
     .subscribe(seniors => {
-      console.log('seniors found:', seniors);
-      this.seniorService.setSeniors(seniors);
+      // console.log('seniors found:', seniors);
+      // this.seniorService.setSeniors(seniors);
       this.loadedSeniors = seniors;
       this.loadedSeniors = this.getSeniors();
-
       // this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
   });
   this.http
@@ -137,22 +115,15 @@ onFetchSeniors() {
   .subscribe(forcedetails => {
     this.otherLoadedForceDetails = forcedetails;
   });
+  this.show2 = true;
 }
-
-// private seniors: Senior[] = [];
-
-// setSeniors(seniors: Senior[]) {
-//   this.loadedSeniors = seniors;
-//   this.seniorsChanged.next(this.loadedSeniors.slice());
-// }
 
 getSeniors() {
   return this.loadedSeniors.slice();
 }
 
-getSenior(index: number) {
-  return this.loadedSeniors[index];
-
-}
+// getSenior(index: number) {
+//   return this.loadedSeniors[index];
+// }
 
 }

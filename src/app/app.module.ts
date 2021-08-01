@@ -18,7 +18,7 @@ import { ForceService } from './forces/force.service';
 
 import { ForceDetailService } from './forces/force-detail.service';
 
-import { SeniorService } from './forces/senior.service';
+// import { SeniorService } from './forces/senior.service';
 import { SeniorItemComponent } from './forces/force-senior/senior-item/senior-item.component';
 
 
@@ -42,7 +42,7 @@ import { SeniorItemComponent } from './forces/force-senior/senior-item/senior-it
     RouterModule,
     HttpClientModule
   ],
-  providers: [ForceService, ForceDetailService, SeniorService, ForcesDetailComponent],
+  providers: [ForceService, ForceDetailService, ForcesDetailComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
