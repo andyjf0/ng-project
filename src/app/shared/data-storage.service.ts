@@ -41,7 +41,7 @@ export class DataStorageService {
     // return forcesArray;
     // }))
     .subscribe(forces => {
-      console.log(forces);
+      // console.log(forces);
       this.forceService.setForces(forces);
   });
 }

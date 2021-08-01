@@ -113,7 +113,7 @@ onFetchSeniors() {
     })
     )
     .subscribe(seniors => {
-      console.log('detail component', seniors);
+      console.log('seniors found:', seniors);
       this.seniorService.setSeniors(seniors);
       this.loadedSeniors = seniors;
       this.loadedSeniors = this.getSeniors();
