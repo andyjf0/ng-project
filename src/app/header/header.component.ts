@@ -11,10 +11,6 @@ export class HeaderComponent {
 
   constructor(private dataStorageService: DataStorageService) { }
 
-  // onFetchData() {
-  //   this.dataStorageService.storeForces();
-
-  // }
   onFetchData() {
     this.dataStorageService.fetchForces();
   }

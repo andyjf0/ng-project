@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map } from 'rxjs/operators'
-import { Observable } from "rxjs";
 import { Subject } from 'rxjs';
 
 
@@ -9,10 +8,8 @@ import { ForceDetail } from '../force-detail.model';
 import { Force } from '../force.model';
 
 import { Senior } from '../senior.model';
-// import { SeniorService } from '../senior.service';
 import { ForceService } from '../force.service';
 
-import { ForceDetailService } from '../force-detail.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -35,7 +32,6 @@ export class ForcesDetailComponent implements OnInit {
   public show2:boolean = false;
 
   constructor(private forceService: ForceService,
-    private forceDetailService: ForceDetailService,
     private dataStorageService: DataStorageService,
     private route: ActivatedRoute,
     private router: Router,
@@ -52,10 +48,6 @@ export class ForcesDetailComponent implements OnInit {
       }
     );
     }
-
-  // Show() {
-  //   var IsVisible:boolean = true;
-  // }
 
   fetchForceDetail(){
     this.http
@@ -93,7 +85,6 @@ export class ForcesDetailComponent implements OnInit {
     )
     .subscribe(seniors => {
       // console.log('seniors found:', seniors);
-      // this.seniorService.setSeniors(seniors);
       this.loadedSeniors = seniors;
       this.loadedSeniors = this.getSeniors();
       // this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
