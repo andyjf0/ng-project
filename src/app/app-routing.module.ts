@@ -8,7 +8,6 @@ import { ForcesDetailComponent } from './forces/forces-detail/forces-detail.comp
 import { ForcesItemComponent } from './forces/forces-list/forces-item/forces-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ForceStartComponent } from './forces/force-start/force-start.component';
-import { ForceSeniorComponent } from './forces/force-senior/force-senior.component';
 
 
 const appRoutes: Routes = [
@@ -16,7 +15,6 @@ const appRoutes: Routes = [
   { path: 'forces', component: ForcesComponent, children: [
     { path: '', component: ForceStartComponent },
     { path: ':id', component: ForcesDetailComponent },
-    { path: ':id/senior', component: ForceSeniorComponent}
   ] },
   { path: 'list', component: ForcesListComponent },
   { path: 'detail', component: ForcesDetailComponent }

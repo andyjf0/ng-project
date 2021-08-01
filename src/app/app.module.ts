@@ -13,13 +13,13 @@ import { ForcesDetailComponent } from './forces/forces-detail/forces-detail.comp
 import { ForcesItemComponent } from './forces/forces-list/forces-item/forces-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ForceStartComponent } from './forces/force-start/force-start.component';
-import { ForceSeniorComponent } from './forces/force-senior/force-senior.component';
+// import { ForceSeniorComponent } from './forces/force-senior/force-senior.component';
 import { ForceService } from './forces/force.service';
 
 import { ForceDetailService } from './forces/force-detail.service';
 
 // import { SeniorService } from './forces/senior.service';
-import { SeniorItemComponent } from './forces/force-senior/senior-item/senior-item.component';
+// import { SeniorItemComponent } from './forces/force-senior/senior-item/senior-item.component';
 
 
 @NgModule({
@@ -32,8 +32,6 @@ import { SeniorItemComponent } from './forces/force-senior/senior-item/senior-it
     ForcesItemComponent,
     DropdownDirective,
     ForceStartComponent,
-    ForceSeniorComponent,
-    SeniorItemComponent
   ],
   imports: [
     BrowserModule,
