@@ -28,8 +28,8 @@ export class ForcesDetailComponent implements OnInit {
   loadedForceDetails: ForceDetail[] = [];
   otherLoadedForceDetails: ForceDetail[] = [];
   loadedSeniors: Senior[] = [];
-  public show:boolean = false;
-  public show2:boolean = false;
+  public showDetail:boolean = false;
+  public showSeniors:boolean = false;
 
   constructor(private forceService: ForceService,
     private dataStorageService: DataStorageService,
@@ -67,7 +67,8 @@ export class ForcesDetailComponent implements OnInit {
     .subscribe(forcedetails => {
       this.loadedForceDetails = forcedetails;
   });
-  this.show = true;
+  this.showSeniors = false;
+  this.showDetail = true;
 }
 
   fetchSeniors(){
@@ -106,7 +107,8 @@ export class ForcesDetailComponent implements OnInit {
   .subscribe(forcedetails => {
     this.otherLoadedForceDetails = forcedetails;
   });
-  this.show2 = true;
+  this.showDetail = false;
+  this.showSeniors = true;
 }
 
 getSeniors() {

@@ -14,7 +14,7 @@
   </div>
 </div>
 <hr>
-<div class="row" *ngIf="show">
+<div class="row" *ngIf="showDetail">
   <div>
 
     <ul class="list-group" *ngIf="loadedForceDetails.length >= 1">
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="row" *ngIf="show2">
+<div class="row" *ngIf="showSeniors">
   <div>
 
         <div *ngIf="loadedSeniors.length >= 1">
@@ -42,9 +42,12 @@
         <div
  [value]="name" *ngFor="let senior of loadedSeniors">
  <h4>{{ senior.name }}</h4>
-  <h5>Rank: {{ senior.rank }}</h5> Bio:
+  <h5>Rank: {{ senior.rank }}</h5>
+    <!-- <div>
+      Contact Details: <a>{{ senior.contact_details.twitter | json}}</a>
+    </div> -->
+  Bio:
   <span [innerHTML]="senior.bio"></span><br>
-  <!-- Contact Details: {{ senior.contact_details.twitter }} -->
 </div>
         </div>
 
