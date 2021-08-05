@@ -44,7 +44,7 @@
  <h4>{{ senior.name }}</h4>
   <h5>Rank: {{ senior.rank }}</h5>
     <div>
-      <a>{{ senior.contact_details.twitter }}</a>
+      <a [href]=senior.contact_details.twitter>{{ senior.contact_details.twitter }}</a>
     </div>
   <span [innerHTML]="senior.bio"></span><br>
 </div>
