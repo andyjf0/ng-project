@@ -43,10 +43,9 @@
  [value]="name" *ngFor="let senior of loadedSeniors">
  <h4>{{ senior.name }}</h4>
   <h5>Rank: {{ senior.rank }}</h5>
-    <!-- <div>
-      Contact Details: <a>{{ senior.contact_details.twitter | json}}</a>
-    </div> -->
-  Bio:
+    <div>
+      <a>{{ senior.contact_details.twitter }}</a>
+    </div>
   <span [innerHTML]="senior.bio"></span><br>
 </div>
         </div>
