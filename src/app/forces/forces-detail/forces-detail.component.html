@@ -37,10 +37,11 @@
   <div>
 
         <div *ngIf="loadedSeniors.length >= 1">
-          <h1>{{ this.otherLoadedForceDetails[5] }}</h1>
+          <h1>{{ this.loadedForceDetails[5] }}</h1>
           <h4>Senior Officers:</h4>
         <div
  [value]="name" *ngFor="let senior of loadedSeniors">
+ <br>
  <h4>{{ senior.name }}</h4>
   <h5>Rank: {{ senior.rank }}</h5>
     <div>
@@ -51,7 +52,7 @@
         </div>
 
       <div *ngIf="loadedSeniors.length === 0">
-        <h1>{{ this.otherLoadedForceDetails[5] }}</h1>
+        <h1>{{ this.loadedForceDetails[5] }}</h1>
         <h4>Senior Officers:</h4>
         No data available
       </div>

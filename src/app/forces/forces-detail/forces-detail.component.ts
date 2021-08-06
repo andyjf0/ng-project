@@ -26,7 +26,6 @@ export class ForcesDetailComponent implements OnInit {
   force: Force;
   id: number;
   loadedForceDetails: ForceDetail[] = [];
-  otherLoadedForceDetails: ForceDetail[] = [];
   loadedSeniors: Senior[] = [];
   public showDetail:boolean = false;
   public showSeniors:boolean = false;
@@ -85,28 +84,11 @@ export class ForcesDetailComponent implements OnInit {
     })
     )
     .subscribe(seniors => {
-      // console.log('seniors found:', seniors);
       this.loadedSeniors = seniors;
       this.loadedSeniors = this.getSeniors();
       // this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
   });
-  this.http
-  .get<{ [key: string]: ForceDetail }>(
-    'https://data.police.uk/api/forces/' + this.force.id
-    )
-  .pipe(
-    map(responseData => {
-    const detailArray: ForceDetail[] = [];
-    for (const key in responseData) {
-    if (responseData.hasOwnProperty(key)) {
-      detailArray.push(responseData[key]);
-    }}
-    return detailArray;
-  })
-  )
-  .subscribe(forcedetails => {
-    this.otherLoadedForceDetails = forcedetails;
-  });
+  this.fetchForceDetail();
   this.showDetail = false;
   this.showSeniors = true;
 }
@@ -114,9 +96,5 @@ export class ForcesDetailComponent implements OnInit {
 getSeniors() {
   return this.loadedSeniors.slice();
 }
-
-// getSenior(index: number) {
-//   return this.loadedSeniors[index];
-// }
 
 }
