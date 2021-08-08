@@ -9,10 +9,6 @@ export class ForceService {
   forceSelected = new EventEmitter<Force>();
   forcesChanged = new Subject<Force[]>();
 
-  // private forces: Force[] = [
-  //   new Force('a test force', 'test id')
-  // ];
-
   private forces: Force[] = [];
 
   setForces(forces: Force[]) {

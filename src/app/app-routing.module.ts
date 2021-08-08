@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { ForcesComponent } from './forces/forces.component';
 import { ForcesListComponent } from './forces/forces-list/forces-list.component';
 import { ForcesDetailComponent } from './forces/forces-detail/forces-detail.component';
-import { ForcesItemComponent } from './forces/forces-list/forces-item/forces-item.component';
-import { DropdownDirective } from './shared/dropdown.directive';
 import { ForceStartComponent } from './forces/force-start/force-start.component';
 
 

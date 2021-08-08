@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, Injectable } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { map } from 'rxjs/operators'
 import { Subject } from 'rxjs';
 
@@ -12,7 +12,6 @@ import { ForceService } from '../force.service';
 
 import { Search } from '../search.model';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -36,9 +35,7 @@ export class ForcesDetailComponent implements OnInit {
   public showSearch:boolean = false;
 
   constructor(private forceService: ForceService,
-    private dataStorageService: DataStorageService,
     private route: ActivatedRoute,
-    private router: Router,
     private http: HttpClient,
     ) { };
 
@@ -91,8 +88,6 @@ export class ForcesDetailComponent implements OnInit {
     )
     .subscribe(seniors => {
       this.loadedSeniors = seniors;
-      // this.loadedSeniors = this.getSeniors();
-      // this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
   });
   this.fetchForceDetail();
   this.showDetail = false;
@@ -109,7 +104,6 @@ fetchSearch() {
     for (const key in responseData) {
     if (responseData.hasOwnProperty(key)) {
       searchArray.push(responseData[key]);
-      // searchArray.push({ ...responseData[key] });
     }}
     return searchArray;
   })
@@ -122,9 +116,5 @@ fetchSearch() {
   this.showSeniors = false;
   this.showSearch = true;
 }
-
-// getSeniors() {
-//   return this.loadedSeniors.slice();
-// }
 
 }

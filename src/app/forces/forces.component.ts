@@ -7,7 +7,6 @@ import { ForceService } from './force.service';
   selector: 'app-forces',
   templateUrl: './forces.component.html',
   styleUrls: ['./forces.component.css'],
-  // providers: [ForceService]
 })
 export class ForcesComponent implements OnInit {
   selectedForce: Force;

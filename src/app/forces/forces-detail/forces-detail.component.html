@@ -17,7 +17,7 @@
 <div class="row" *ngIf="showDetail">
   <div>
 
-    <ul class="list-group" *ngIf="loadedForceDetails.length >= 1">
+    <ul class="list-group" *ngIf="loadedForceDetails.length >= 1; else noInfoText">
       <div class="row">
         <div class="col-xs-12">
           <h1>{{ this.loadedForceDetails[5] }}</h1>
@@ -28,21 +28,24 @@
         <span [innerHTML]="this.loadedForceDetails[0]"></span>
     </ul>
 
-    <ul class="list-group" *ngIf="loadedForceDetails.length === 0">No Force data available
-    </ul>
+    <ng-template #noInfoText>
+      <p>
+        No Force data available
+      </p>
+    </ng-template>
+
   </div>
 </div>
 
 <div class="row" *ngIf="showSeniors">
   <div>
+    <h1>{{ this.loadedForceDetails[5] }}</h1>
+    <h4>Senior Officers:</h4>
 
-        <div *ngIf="loadedSeniors.length >= 1">
-          <h1>{{ this.loadedForceDetails[5] }}</h1>
-          <h4>Senior Officers:</h4>
+        <div *ngIf="loadedSeniors.length >= 1; else noInfoText2">
         <div
  [value]="name" *ngFor="let senior of loadedSeniors">
- <br>
- <h4>{{ senior.name }}</h4>
+ <h5>{{ senior.name }}</h5>
   <h5>Rank: {{ senior.rank }}</h5>
     <div>
       <a [href]=senior.contact_details.twitter>{{ senior.contact_details.twitter }}</a>
@@ -51,26 +54,22 @@
 </div>
         </div>
 
-      <div *ngIf="loadedSeniors.length === 0">
-        <h1>{{ this.loadedForceDetails[5] }}</h1>
-        <h4>Senior Officers:</h4>
-        No data available
-      </div>
+      <ng-template #noInfoText2>
+        <p>
+          No data available
+        </p>
+      </ng-template>
 
       </div>
       </div>
 
       <div class="row" *ngIf="showSearch">
         <div>
+          <h1>{{ this.loadedForceDetails[5] }}</h1>
 
-              <div *ngIf="loadedSearch.length >= 1">
-                <h1>{{ this.loadedForceDetails[5] }}</h1>
-
+              <div *ngIf="loadedSearch.length >= 1; else noInfoText3">
                 <h4>{{ loadedSearch.length }} of stop & searches conducted in the last month:</h4>
-
-              <div
-       *ngFor="let search of loadedSearch">
-
+              <div *ngFor="let search of loadedSearch">
        <div>Type of search: {{ search.type }}</div>
         <div>Gender: {{ search.gender }}</div>
         <div>Ethnicity (Officer defined): {{ search.officer_defined_ethnicity }}</div>
@@ -79,11 +78,9 @@
       </div>
               </div>
 
-            <div *ngIf="loadedSearch.length === 0">
-              <h1>{{ this.loadedForceDetails[5] }}</h1>
-              <h4>Most recent Stop & Search data:</h4>
-              No data available
-            </div>
+            <ng-template #noInfoText3>
+              Recent stop & search data not available
+            </ng-template>
 
             </div>
             </div>
