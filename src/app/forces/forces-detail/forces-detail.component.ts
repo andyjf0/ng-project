@@ -10,6 +10,8 @@ import { Force } from '../force.model';
 import { Senior } from '../senior.model';
 import { ForceService } from '../force.service';
 
+import { Search } from '../search.model';
+
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,12 +25,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ForcesDetailComponent implements OnInit {
   seniorsChanged = new Subject<Senior[]>();
+  searchChanged = new Subject<Search[]>();
   force: Force;
   id: number;
   loadedForceDetails: ForceDetail[] = [];
   loadedSeniors: Senior[] = [];
+  loadedSearch: Search[] = [];
   public showDetail:boolean = false;
   public showSeniors:boolean = false;
+  public showSearch:boolean = false;
 
   constructor(private forceService: ForceService,
     private dataStorageService: DataStorageService,
@@ -68,6 +73,7 @@ export class ForcesDetailComponent implements OnInit {
   });
   this.showSeniors = false;
   this.showDetail = true;
+  this.showSearch = false;
 }
 
   fetchSeniors(){
@@ -78,23 +84,49 @@ export class ForcesDetailComponent implements OnInit {
       const seniorArray: Senior[] = [];
       for (const key in responseData) {
       if (responseData.hasOwnProperty(key)) {
-        seniorArray.push({ ...responseData[key] });
+        seniorArray.push(responseData[key]);
       }}
       return seniorArray;
     })
     )
     .subscribe(seniors => {
       this.loadedSeniors = seniors;
-      this.loadedSeniors = this.getSeniors();
+      // this.loadedSeniors = this.getSeniors();
       // this.router.navigate(['../', this.id, 'senior'], {relativeTo: this.route});
   });
   this.fetchForceDetail();
   this.showDetail = false;
   this.showSeniors = true;
+  this.showSearch = false;
 }
 
-getSeniors() {
-  return this.loadedSeniors.slice();
+fetchSearch() {
+  this.http
+  .get<Search[]>('https://data.police.uk/api/stops-force?force=' + this.force.id)
+  .pipe(
+    map(responseData => {
+    const searchArray: Search[] = [];
+    for (const key in responseData) {
+    if (responseData.hasOwnProperty(key)) {
+      searchArray.push(responseData[key]);
+      // searchArray.push({ ...responseData[key] });
+    }}
+    return searchArray;
+  })
+  )
+  .subscribe(searchs => {
+    this.loadedSearch = searchs;
+    console.log(this.loadedSearch)
+    console.log(this.loadedSearch.length)
+});
+  this.fetchForceDetail();
+  this.showDetail = false;
+  this.showSeniors = false;
+  this.showSearch = true;
 }
+
+// getSeniors() {
+//   return this.loadedSeniors.slice();
+// }
 
 }

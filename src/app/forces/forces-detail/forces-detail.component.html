@@ -8,7 +8,7 @@
       <ul class="dropdown-menu">
         <li><a style="cursor: pointer;" (click)="fetchForceDetail()" style="cursor: pointer;">Force Details</a></li>
         <li><a style="cursor: pointer;" (click)="fetchSeniors()" style="cursor: pointer;">Senior Officers</a></li>
-                <!-- <li><a href="#">Stop and search</a></li> -->
+        <li><a style="cursor: pointer;" (click)="fetchSearch()" style="cursor: pointer;">Stop & search</a></li>
       </ul>
     </div>
   </div>
@@ -59,3 +59,31 @@
 
       </div>
       </div>
+
+      <div class="row" *ngIf="showSearch">
+        <div>
+
+              <div *ngIf="loadedSearch.length >= 1">
+                <h1>{{ this.loadedForceDetails[5] }}</h1>
+
+                <h4>{{ loadedSearch.length }} of stop & searches conducted in the last month:</h4>
+
+              <div
+       *ngFor="let search of loadedSearch">
+
+       <div>Type of search: {{ search.type }}</div>
+        <div>Gender: {{ search.gender }}</div>
+        <div>Ethnicity (Officer defined): {{ search.officer_defined_ethnicity }}</div>
+        <div>Age range: {{ search.age_range }}</div>
+        <br>
+      </div>
+              </div>
+
+            <div *ngIf="loadedSearch.length === 0">
+              <h1>{{ this.loadedForceDetails[5] }}</h1>
+              <h4>Most recent Stop & Search data:</h4>
+              No data available
+            </div>
+
+            </div>
+            </div>
