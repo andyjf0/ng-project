@@ -116,8 +116,6 @@ fetchSearch() {
   )
   .subscribe(searchs => {
     this.loadedSearch = searchs;
-    console.log(this.loadedSearch)
-    console.log(this.loadedSearch.length)
 });
   this.fetchForceDetail();
   this.showDetail = false;
